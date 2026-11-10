@@ -1,0 +1,6 @@
+{
+  "name": "SHOT MASTER AI",
+  "description": "تطبيق احترافي مدعوم بالذكاء الاصطناعي للمصورين وصناع الفيديو: تدريب فوتوغرافي، حاسبة التعريض وإعدادات الكاميرا، استوديو الإضاءة التفاعلي، ودليل اللقطات السينمائية.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

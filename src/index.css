@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #0c0c0e;
+    --ink: #f8f8f8;
+    --accent: #00f0ff;
+    --ink-faint: rgba(248, 248, 248, 0.1);
+    --accent-muted: rgba(0, 240, 255, 0.15);
+    --font-cairo: 'Cairo', 'Inter', sans-serif;
+    --font-syne: 'Syne', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-cairo);
+    background-color: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+}
+
+.mono {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.font-syne {
+  font-family: var(--font-syne);
+}
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0c0e;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(248, 248, 248, 0.15);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Variation 2 Viewfinder & HUD Reticle */
+.viewfinder-shell {
+  position: relative;
+  background: #000000;
+  border-radius: 4px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--ink-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hud-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: radial-gradient(rgba(248, 248, 248, 0.1) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.hud-corner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--accent);
+  position: absolute;
+  pointer-events: none;
+}
+.hud-corner.tl { top: 16px; left: 16px; border-right: 0; border-bottom: 0; }
+.hud-corner.tr { top: 16px; right: 16px; border-left: 0; border-bottom: 0; }
+.hud-corner.bl { bottom: 16px; left: 16px; border-right: 0; border-top: 0; }
+.hud-corner.br { bottom: 16px; right: 16px; border-left: 0; border-top: 0; }
+
+.reticle-center {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(0, 240, 255, 0.45);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.reticle-center::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+/* Card & Buttons for Variation 2 */
+.card-v2 {
+  background: rgba(248, 248, 248, 0.035);
+  border: 1px solid var(--ink-faint);
+  border-radius: 4px;
+}
+
+.btn-v2 {
+  background: var(--accent);
+  color: #0c0c0e;
+  border: none;
+  border-radius: 2px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  transition: all 0.2s ease;
+}
+.btn-v2:hover {
+  background: #33f3ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+}
+
+/* Subtle Accent Pulse Animation */
+@keyframes accent-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.65), 0 0 10px rgba(0, 240, 255, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 240, 255, 0), 0 0 20px rgba(0, 240, 255, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0), 0 0 10px rgba(0, 240, 255, 0.35);
+  }
+}
+
+.pulse-accent {
+  animation: accent-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.btn-outline-v2 {
+  background: transparent;
+  border: 1px solid rgba(248, 248, 248, 0.2);
+  color: var(--ink);
+  border-radius: 2px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-outline-v2:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0, 240, 255, 0.05);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
